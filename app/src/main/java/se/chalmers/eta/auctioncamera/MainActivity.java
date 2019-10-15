@@ -37,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
         EditText idEditText = findViewById(R.id.id_editText);
         EditText yearEditText = findViewById(R.id.year_editText);
 
+        String photoName = yearEditText.getText().toString() + String.format("%04d", Integer.parseInt(idEditText.getText().toString()));
+
         photoFile = null;
 
         try {
-            photoFile = createImageFile(yearEditText.getText().toString() + idEditText.getText().toString());
+            photoFile = createImageFile(photoName);
         } catch (IOException ex) {
             Toast myToast = Toast.makeText(this, "Error creating file.",
                     Toast.LENGTH_SHORT);
